@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="cobot_urdf_last">
+
+    <link name="finger-1-link">
+        <inertial>
+            <origin xyz="-0.008443385199655925 0.03000000140815903 1.2294522377942484e-09"
+                rpy="0.0 1.2446030555722283e-60 5.527147875260445e-76" />
+            <mass value="0.2128834660023882" />
+            <inertia ixx="7.903229595107586e-05" iyy="1.9267709840176117e-05"
+                izz="6.796549349066816e-05" ixy="2.168404344971024e-19" iyz="1.3877787807814457e-17"
+                ixz="3.469446951953614e-18" />
+        </inertial>
+        <visual>
+            <origin xyz="-0.04099999999999111 -0.01499999859184097 1.229445985018174e-09"
+                rpy="-1.5707963267948963 -1.9230207024252956e-13 -2.813099754978189e-29" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/finger_right-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="-0.04099999999999111 -0.01499999859184097 1.229445985018174e-09"
+                rpy="-1.5707963267948963 -1.9230207024252956e-13 -2.813099754978189e-29" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/finger_right-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="finger-2-link">
+        <inertial>
+            <origin xyz="0.008443385199673763 -0.03000000140815903 -1.2294397322420992e-09"
+                rpy="0.0 -1.2446030555722283e-60 -5.527147875260445e-76" />
+            <mass value="0.21288346600238772" />
+            <inertia ixx="7.903229595090933e-05" iyy="1.9267709840120606e-05"
+                izz="6.796549349066469e-05" ixy="-1.5086702559845088e-33"
+                iyz="-2.4009861057577842e-36" ixz="-1.734723475976807e-18" />
+        </inertial>
+        <visual>
+            <origin xyz="0.04100000000000895 0.014999998591841007 -1.229445985018174e-09"
+                rpy="1.570796326794897 1.9230207024252956e-13 2.813099754978189e-29" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/left_finger-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.04100000000000895 0.014999998591841007 -1.229445985018174e-09"
+                rpy="1.570796326794897 1.9230207024252956e-13 2.813099754978189e-29" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/left_finger-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="finger-1-joint" type="prismatic">
+        <origin xyz="0.0 0.015 0.040999999999999995"
+            rpy="-4.930380657631324e-32 -1.5707963267948966 0" />
+        <parent link="gripper-base-link" />
+        <child link="finger-1-link" />
+        <axis xyz="1.0 2.524354896707238e-29 0.0" />
+        <limit lower="-0.025" upper="0.0" effort="1000000" velocity="1000000" />
+    </joint>
+
+    <joint name="finger-2-joint" type="prismatic">
+        <origin xyz="0.0 0.015 -0.040999999999999995" rpy="3.141592653589793 -1.5707963267948966 0" />
+        <parent link="gripper-base-link" />
+        <child link="finger-2-link" />
+        <axis xyz="1.0 -2.524354896707238e-29 0.0" />
+        <limit lower="0.0" upper="0.025" effort="1000000" velocity="1000000" />
+    </joint>
+</robot>

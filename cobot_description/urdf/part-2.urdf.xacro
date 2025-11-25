@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="main">
+
+    <link name="part-2-link">
+        <inertial>
+            <origin xyz="-6.446385462448829e-08 0.22299980820732856 0.08703678624211574"
+                rpy="0.0 -9.865958957339894e-74 0.0" />
+            <mass value="55.527652767250565" />
+            <inertia ixx="2.1297738755873112" iyy="0.147373948306055" izz="2.0913212409037367"
+                ixy="4.861709959453926e-07" iyz="-4.512210840523778e-07"
+                ixz="-4.633156234161857e-08" />
+        </inertial>
+        <visual>
+            <origin xyz="3.0730973321624325e-15 5.329070518200751e-17 0.006999999999999949"
+                rpy="-1.5707963267948968 1.570796326794874 0" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/part_2-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="3.0730973321624325e-15 5.329070518200751e-17 0.006999999999999949"
+                rpy="-1.5707963267948968 1.570796326794874 0" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/part_2-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="part-2-joint" type="continuous">
+        <origin xyz="0.0 -0.073 0.087"
+            rpy="1.5707963267948966 6.310887241768095e-30 2.627434620609032e-46" />
+        <parent link="part-1-link" />
+        <child link="part-2-link" />
+        <axis xyz="-2.627434620609032e-46 -3.9443045261049027e-31 1.0" />
+    </joint>
+
+</robot>

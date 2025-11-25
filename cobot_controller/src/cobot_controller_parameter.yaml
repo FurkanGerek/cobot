@@ -1,0 +1,54 @@
+cobot_controller:
+  part_1_joint: {
+    type: string,
+    default_value: "",
+    description: "Names of the part 1 joint"
+  }
+
+  part_2_joint: {
+    type: string,
+    default_value: "",
+    description: "Names of the part 2 joint"
+  }
+
+  part_3_joint: {
+    type: string,
+    default_value: "",
+    description: "Names of the part 3 joint"
+  }
+
+  part_4_joint: {
+    type: string,
+    default_value: "",
+    description: "Names of the part 4 joint"
+  }
+
+  part_5_joint: {
+    type: string,
+    default_value: "",
+    description: "Names of the part 5 joint"
+  }
+
+  part_6_joint: {
+    type: string,
+    default_value: "",
+    description: "Names of the part 6 joint"
+  }
+
+  finger_1_joint: {
+    type: string,
+    default_value: "",
+    description: "Names of the finger 1 joint"
+  }
+
+  finger_2_joint: {
+    type: string,
+    default_value: "",
+    description: "Names of the finger 2 joint"
+  }
+
+  angle_degree: {
+    type: double,
+    default_value: 1.8,
+    description: ""
+  }

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="main">
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.000696452473990524 -1.170323750862548e-10 0.030371653659111337"
+                rpy="0.0 0.0 0.0" />
+            <mass value="6.621911264861204" />
+            <inertia ixx="0.00923937323696488" iyy="0.009511010438696694" izz="0.014108201739142418"
+                ixy="4.5979814145310376e-12" iyz="5.7989392972185086e-12"
+                ixz="-2.1996132580219004e-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/base-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/base-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="world" />
+
+    <joint name="base_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="world" />
+        <child link="base_link" />
+    </joint>
+
+</robot>

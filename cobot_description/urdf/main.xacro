@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="main">
+    <xacro:include filename="base.urdf.xacro" />
+    <xacro:include filename="part-1.urdf.xacro" />
+    <xacro:include filename="part-2.urdf.xacro" />
+    <xacro:include filename="part-3.urdf.xacro" />
+    <xacro:include filename="part-4.urdf.xacro" />
+    <xacro:include filename="part-5.urdf.xacro" />
+    <xacro:include filename="part-6.urdf.xacro" />
+    <xacro:include filename="gripper.urdf.xacro" />
+    <xacro:include filename="finger.urdf.xacro" />
+    <xacro:include filename="ros2_control.xacro" />
+</robot>

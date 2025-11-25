@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="main">
+    <link name="gripper-base-link">
+        <inertial>
+            <origin xyz="-1.2294464113438154e-09 0.013528576288044327 8.953385102894012e-15"
+                rpy="0.0 0.0 0.0" />
+            <mass value="0.7903113468473031" />
+            <inertia ixx="0.00035518576250788414" iyy="0.000727459318582091"
+                izz="0.0004661570187922681" ixy="-5.551115123125783e-17" iyz="2.414692808250078e-19"
+                ixz="-2.0804537315342093e-17" />
+        </inertial>
+        <visual>
+            <origin xyz="-1.2294464113438154e-09 1.4081590293812952e-09 8.930800543538389e-15"
+                rpy="-1.5707963267948963 -1.5707963267947043 0" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/gripper_base-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="-1.2294464113438154e-09 1.4081590293812952e-09 8.930800543538389e-15"
+                rpy="-1.5707963267948963 -1.5707963267947043 0" />
+            <geometry>
+                <mesh filename="package://cobot_description/meshes/gripper_base-v1.stl"
+                    scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="gripper-base-joint" type="fixed">
+        <origin xyz="-1.3694132276640018e-32 -0.04600000000000009 -0.07075000000000001"
+            rpy="-1.5707963267948966 6.310887241768095e-30 -1.5707963267948966" />
+        <parent link="part-6-link" />
+        <child link="gripper-base-link" />
+    </joint>
+</robot>

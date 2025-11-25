@@ -1,0 +1,9 @@
+<library path="cobot_controller">
+    <class name="cobot_controller/CobotController"
+        type="cobot_controller::CobotController"
+        base_class_type="controller_interface::ControllerInterface">
+        <description>
+            Cobot Controller
+        </description>
+    </class>
+</library>
