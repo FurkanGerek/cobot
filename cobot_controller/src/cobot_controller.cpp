@@ -189,9 +189,11 @@ namespace cobot_controller
                 double current_state = state_interfaces_[i].get_value();
                 double target_goal = goals_[i];
 
-                feedback->x = 0;
-                feedback->y = 0;
-                feedback->z = 0;
+                std::array<double, 3> feedback_forward = forward_kinematic(state_interfaces_[0].get_value(), state_interfaces_[1].get_value(), state_interfaces_[2].get_value(), state_interfaces_[3].get_value());
+
+                feedback->x = feedback_forward[0];
+                feedback->y = feedback_forward[1];
+                feedback->z = feedback_forward[2];
 
                 goal_handle->publish_feedback(feedback);
                 if (fabs(current_state - target_goal) > angle_)
@@ -203,9 +205,10 @@ namespace cobot_controller
 
             if (all_joints_reached)
             {
-                result->x = 0.0;
-                result->y = 0.0;
-                result->z = 0.0;
+                std::array<double, 3> feedback_forward = forward_kinematic(state_interfaces_[0].get_value(), state_interfaces_[1].get_value(), state_interfaces_[2].get_value(), state_interfaces_[3].get_value());
+                result->x = feedback_forward[0];
+                result->y = feedback_forward[1];
+                result->z = feedback_forward[2];
 
                 goal_handle->succeed(result);
                 RCLCPP_INFO(get_node()->get_logger(), "Goal başarıyla tamamlandı (Hedefe ulaşıldı).");
@@ -220,6 +223,15 @@ namespace cobot_controller
             goal_handle->abort(result);
             RCLCPP_ERROR(get_node()->get_logger(), "Sistem kapandığı için Goal iptal edildi (Abort).");
         }
+    }
+
+    std::array<double, 3> CobotController::forward_kinematic(double Q1, double Q2, double Q3, double Q4)
+    {
+        double x, y, z;
+        x = 0.13 * std::sin(Q1) - std::cos(Q1) * (0.446 * std::sin(Q2) + 0.361 * std::sin(Q2 + Q3) + 0.1425 * std::sin(Q2 + Q3 + Q4));
+        y = -0.13 * std::cos(Q1) - std::sin(Q1) * (0.446 * std::sin(Q2) + 0.361 * std::sin(Q2 + Q3) + 0.1425 * std::sin(Q2 + Q3 + Q4));
+        z = 0.446 * std::cos(Q2) + 0.361 * std::cos(Q2 + Q3) + 0.1425 * std::cos(Q2 + Q3 + Q4);
+        return {x, y, z};
     }
 }
 #include "pluginlib/class_list_macros.hpp"

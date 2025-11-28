@@ -13,6 +13,8 @@
 #include "cobot_interfaces/action/forward_kinematic.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
 
+#include <cmath>
+
 namespace cobot_controller
 {
     class CobotController : public controller_interface::ControllerInterface
@@ -55,6 +57,8 @@ namespace cobot_controller
             const std::shared_ptr<GoalHandleForwardKinematic> goal_handle);
         void handle_accepted(const std::shared_ptr<GoalHandleForwardKinematic> goal_handle);
         void execute(const std::shared_ptr<GoalHandleForwardKinematic> goal_handle);
+
+        std::array<double, 3> forward_kinematic(double Q1, double Q2, double Q3, double Q4);
 
     protected:
         std::shared_ptr<ParamListener> param_listener_;
